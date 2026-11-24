@@ -44,7 +44,7 @@ jobs:
       # miss and rebuilds, an unchanged pin skips the (slow) build.
       - name: Restore the pinned tole build
         id: tole-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ${{ runner.temp }}/tole-bin
           key: tole-${{ runner.os }}-${{ env.TOLE_REV }}
