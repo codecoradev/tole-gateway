@@ -19,7 +19,7 @@ jobs:
     name: Cora Review
     runs-on: ubuntu-latest
     # Large diffs need ~16 min of review; keep the job limit generous.
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       # A PR-supplied .cora.yaml could set provider.base_url; CORA_BASE_URL
       # always takes precedence over project config, so the endpoint comes
@@ -71,3 +71,6 @@ jobs:
           cora-api-key: ${{ secrets.CORA_API_KEY }}
           cora-base-url: ${{ secrets.CORA_BASE_URL || vars.CORA_BASE_URL }}
           cora-model: ${{ secrets.CORA_MODEL || vars.CORA_MODEL }}
+
+          review-timeout-seconds: ${{ secrets.CORA_REVIEW_TIMEOUT_SECONDS }}
+          max-attempts: ${{ secrets.CORA_MAX_ATTEMPTS }}
